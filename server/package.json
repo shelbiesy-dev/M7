@@ -1,0 +1,19 @@
+{
+  "name": "dreamy-fish-pond-server",
+  "version": "1.0.0",
+  "description": "Serves the Dreamy Fish Pond page and passes Freenove ESP32 button presses to it over a WebSocket.",
+  "type": "module",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "serialport": "^12.0.0",
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,21 @@
+# Agent settings (Claude Code)
+.claude/
+
+# Editor settings
+.vscode/
+
+# Mac system file
+.DS_Store
+
+# Passwords and keys
+.env
+
+.env.*
+*.key
+*.pem
+
+# Installed libraries
+node_modules/
+
+# PlatformIO build files
+.pio/

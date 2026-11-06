@@ -1,0 +1,107 @@
+:root {
+  --sea-deep: #0a2350;
+  --text: rgba(225, 240, 255, 0.72);
+  --icon: rgba(225, 240, 255, 0.9);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;            /* no scroll bars */
+  background: var(--sea-deep);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#sea, #sea canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Small text lines ---------- */
+.line {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 12px rgba(120, 180, 255, 0.45);
+}
+
+.hint {
+  bottom: 28px;
+  transition: opacity 1s ease;  /* fades out over ~1 s after the first drop */
+}
+.hint.gone { opacity: 0; }
+
+.status {
+  top: 22px;
+  font-size: 13px;
+}
+.status[hidden] { display: none; }
+
+/* ---------- Mute icon ---------- */
+.mute {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 36px;
+  height: 36px;
+  padding: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.32;               /* small and faint */
+  transition: opacity 0.3s ease;
+}
+.mute:hover, .mute:focus-visible { opacity: 0.85; }
+.mute:focus { outline: none; }
+.mute:focus-visible { outline: 1px solid var(--icon); }
+
+.mute svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--icon);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mute .speaker { fill: var(--icon); stroke: none; }
+.mute[data-state="on"] .cross { display: none; }
+.mute[data-state="muted"] .waves { display: none; }
+
+/* ---------- Fatal message (E8, E9) ---------- */
+.fatal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--sea-deep);
+}
+.fatal[hidden] { display: none; }
+.fatal p {
+  margin: 0;
+  max-width: 34em;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.6;
+}
